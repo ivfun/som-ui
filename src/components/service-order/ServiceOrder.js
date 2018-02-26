@@ -1,11 +1,12 @@
 import React,{Component} from 'react';
 import ContentComponent from "../content/Content";
-import HttpService from '../../utils/services/htpp/http.service';
+import ServiceOrder from './services/ServiceOrder.service';
 
+import { connect } from 'react-redux';
 class ServiceOrderComponent extends Component{
 
     componentWillMount(){
-        HttpService.get('/component').then(data=>console.log(data));
+        ServiceOrder.findAll();
     }
 
     render(){
@@ -17,4 +18,9 @@ class ServiceOrderComponent extends Component{
         )
     }
 }
-export default ServiceOrderComponent;
+const mapStateToProps = ({serviceOrder}) => {
+    console.log(serviceOrder);
+    return serviceOrder;
+};
+
+export default connect(mapStateToProps)(ServiceOrderComponent);

@@ -65,9 +65,9 @@ class ContentComponent extends Component{
         )
     }
 }
-const mapStateToProps = (state) => ({
-        maximized: state.maximized,
-        toHome: state.toHome
+const mapStateToProps = ({content}) => ({
+        maximized: content.maximized,
+        toHome: content.toHome
 });
 
 const mapDispatchToProps = dispatch => ({

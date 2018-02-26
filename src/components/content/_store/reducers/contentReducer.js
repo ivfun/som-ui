@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
             state = {...state, maximized:true};
             break;
         case NORMALIZE_CONTENT:
-            state = {...initialState};
+            state = {...state};
             break;
         default:break
     }

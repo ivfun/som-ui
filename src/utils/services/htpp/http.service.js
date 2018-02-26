@@ -31,8 +31,8 @@ class GenericHttpRequest {
 const getInstanceOf = (baseUrl)=>{
     let instanceOf =  axios.create({
         baseURL:baseUrl,
-        timeout:6000,
-        headers: {'X-Custom-Header': 'foobar'}
+        timeout:6000
+
     });
     return instanceOf;
 };

@@ -37,7 +37,6 @@ class ContentComponent extends Component{
         this.state.maximized? this.props.minimizeContent():this.props.maximizeContent();
     }
     render(){
-        debugger;
         let{maximized, toHome, isDashboard} = this.state;
         const widthSideBar =  maximized ? 0 : 150;
         const height = window.innerHeight-2;
@@ -67,7 +66,6 @@ class ContentComponent extends Component{
     }
 }
 const mapStateToProps = ({content}) => {
-    debugger;
     return {
         maximized: content.maximized,
         toHome: content.toHome

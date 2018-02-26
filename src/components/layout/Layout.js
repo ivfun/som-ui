@@ -38,9 +38,14 @@ class LayoutComponent extends Component {
                                 Home
                             </Menu.Item>
                         </Link>
-                        <Link to="/ordens-servicos">
-                            <Menu.Item name='ordem-servico' link>
+                        <Link to="/service-order">
+                            <Menu.Item name='service-order' link>
                                 Ordem de Serviço
+                            </Menu.Item>
+                        </Link>
+                        <Link to="/component">
+                            <Menu.Item name='component' link>
+                                Component
                             </Menu.Item>
                         </Link>
                     </Sidebar>

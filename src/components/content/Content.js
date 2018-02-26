@@ -42,8 +42,10 @@ class ContentComponent extends Component{
         const height = window.innerHeight-2;
         const width = window.innerWidth - widthSideBar;
 
-        if(toHome)
-            return (<Redirect to='/' />);
+        if(toHome) {
+            this.props.normalizeContent();
+            return (<Redirect to='/'/>);
+        }
 
         return(
             <Segment basic size="massive" style={{height:height+'px', width:width+'px'}}>

@@ -8,13 +8,13 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case TO_HOME:
-            state = { ...state, toHome:true };
+            state = { ...state, toHome:true, maximized:false};
             break;
         case MINIMIZE_CONTENT:
-            state = {...state, maximized:false};
+            state = {...state, maximized:false, toHome:false};
             break;
         case MAXIMIZE_CONTENT:
-            state = {...state, maximized:true};
+            state = {...state, maximized:true, toHome:false};
             break;
         case NORMALIZE_CONTENT:
             state = {...state};

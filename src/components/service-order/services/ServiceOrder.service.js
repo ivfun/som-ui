@@ -1,16 +1,16 @@
 
 import store from '../../_store/store';
 import {fetchDataFailure, fetchDataRequest, fetchDataSuccess} from "../_store/actions/ServiceOrderCrudAction";
-import ServiceOrderCrud from  './../services/ServiceOrder.service.crud';
+import ServiceOrderServiceCrud from  './../services/ServiceOrder.service.crud';
 
-class ServiceOrder{
+class ServiceOrderService{
     constructor(store){
         this._store = store;
     }
     findAll(){
         this._store.dispatch((dispatch)=>{
             dispatch(fetchDataRequest());
-            ServiceOrderCrud.findAll()
+            ServiceOrderServiceCrud.findAll()
                 .then(
                     data=>dispatch(fetchDataSuccess(data))
                 )
@@ -22,4 +22,4 @@ class ServiceOrder{
 
 }
 
-export default new ServiceOrder(store);
+export default new ServiceOrderService(store);

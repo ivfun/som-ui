@@ -2,10 +2,10 @@ import GenericCrud from '../../../utils/classes/GenericCrud';
 
 
 
-class ServiceOrderCrud extends GenericCrud{
+class ServiceOrderServiceCrud extends GenericCrud{
     constructor(){
-        super('/component');
+        super('/service-order');
     }
 }
 
-export default new ServiceOrderCrud();
+export default new ServiceOrderServiceCrud();

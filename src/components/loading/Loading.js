@@ -1,28 +1,49 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Segment, Dimmer, Loader} from 'semantic-ui-react';
 
-const LoadingComponent = ({isLoading, error}) => {
-    let value = null;
-    const widthSideBar =  150;
-    const height = window.innerHeight-2;
-    const width = window.innerWidth - widthSideBar;
-    // Handle the loading state
-    if (isLoading) {
-        value = 'Loading...';
+import { connect } from 'react-redux'
+
+class LoadingComponent extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            loading:props.loading,
+            isLoading:props.isLoading
+        }
     }
-    // Handle the error state
-    else if (error) {
-        value = 'Sorry, there was a problem loading the page.';
+    componentWillReceiveProps(newProps){
+        this.setStateFromProps(newProps);
     }
-    if (!value) {
-        return null;
-    } else return <Segment size="massive" style={{height: height + 'px', width: width + 'px'}}>
-                    <Dimmer active>
-                        <Loader inverted size='huge'>{value}</Loader>
-                    </Dimmer>
-                  </Segment>
+    setStateFromProps(props){
+        let {loading} = props;
+        this.setState({loading});
+    }
+    render(){
+        const {isLoading, maximized} = this.state;
+        let value = null;
+        const widthSideBar =  maximized?0:150;
+        const height = window.innerHeight-2;
+        const width = window.innerWidth - widthSideBar;
 
+        // Handle the loading state
+        if (isLoading) {
+            value = 'Loading...';
+        }
+        if(!value)
+            return null;
 
-};
+        return(
+            <Segment size="massive" style={{height: height + 'px', width: width + 'px'}}>
+                <Dimmer active>
+                    <Loader inverted size='huge'>{value}</Loader>
+                </Dimmer>
+            </Segment>
+        )
+    }
 
-export default LoadingComponent
+}
+const mapStateToProps = ({content}) => ({
+    maximized: content.maximized
+});
+export default connect(mapStateToProps)(LoadingComponent)

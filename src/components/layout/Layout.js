@@ -54,9 +54,9 @@ class LayoutComponent extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    maximized: state.maximized,
-    redirectToHome:state.redirectToHome
+const mapStateToProps = ({content}) => ({
+    maximized: content.maximized,
+    redirectToHome:content.redirectToHome
 });
 
 

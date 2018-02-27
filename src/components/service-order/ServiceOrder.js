@@ -4,6 +4,9 @@ import ServiceOrderService from './services/ServiceOrder.service';
 
 import { connect } from 'react-redux';
 import LoadingComponent from "../loading/Loading";
+import Body from './sub-components/Body';
+import Footer from './sub-components/Footer';
+
 class ServiceOrderComponent extends Component{
     constructor(props){
         super(props);
@@ -28,7 +31,8 @@ class ServiceOrderComponent extends Component{
             return (<LoadingComponent/>)
         return(
             <ContentComponent headerName="Ordens de Serviços">
-                <input type="text"/>
+                <Body/>
+                <Footer/>
 
             </ContentComponent>
         )

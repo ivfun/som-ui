@@ -45,7 +45,7 @@ class LayoutComponent extends Component {
                         </Link>
                         <Link to="/component">
                             <Menu.Item name='component' link>
-                                Component
+                                Componente
                             </Menu.Item>
                         </Link>
                     </Sidebar>

@@ -17,6 +17,12 @@
 .body-content{
     padding: 10px;
 }
+.footer-content{
+    padding: 10px;
+    position: fixed;
+    bottom: 21px;
+    width: 100%;
+}
 .close-content{
     float: right;
 }

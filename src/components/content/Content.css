@@ -1,5 +1,5 @@
 .content{
-    box-shadow: 5px 5px 50px black;
+    box-shadow: 0px 0px 6px black;
     background-color: #efefef;
 }
 .header-content{
@@ -19,9 +19,9 @@
 }
 .footer-content{
     padding: 10px;
-    position: fixed;
     bottom: 21px;
-    width: 100%;
+    width: inherit;
+    border-top: 1px dashed #ccc;
 }
 .close-content{
     float: right;

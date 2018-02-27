@@ -38,9 +38,6 @@ const getInstanceOf = (baseUrl)=>{
 };
 
 class HttpService extends GenericHttpRequest{
-    constructor(instanceOf){
-        super(instanceOf);
-    }
 
 
 }

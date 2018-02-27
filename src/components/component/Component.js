@@ -38,7 +38,7 @@ class ComponentComponent extends Component{
         )
     }
 }
-const mapStateToProps = ({component}) => {
+const mapStateToProps = ({component:{component}}) => {
     return component
 };
 

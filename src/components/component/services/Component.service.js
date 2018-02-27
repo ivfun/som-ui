@@ -1,6 +1,9 @@
 
 import store from '../../_store/store';
-import {fetchDataFailure, fetchDataRequest, fetchDataSuccess} from "../_store/actions/ComponentCrudAction";
+import {
+    fetchDataFailure, fetchDataRequest, fetchDataSuccess, postDataFailure,
+    postDataRequest, postDataSuccess
+} from "../_store/actions/ComponentCrudAction";
 import ComponentServiceCrud from './Component.service.crud';
 
 class ComponentService{
@@ -16,6 +19,18 @@ class ComponentService{
                 )
                 .catch(
                     error=>dispatch(fetchDataFailure(error))
+                )
+        })
+    }
+    save(objectToSave){
+        this._store.dispatch((dispatch)=>{
+            dispatch(postDataRequest(objectToSave));
+            ComponentServiceCrud.create(objectToSave)
+                .then(
+                    data=>dispatch(postDataSuccess(data))
+                )
+                .catch(
+                    error=>dispatch(postDataFailure(error))
                 )
         })
     }

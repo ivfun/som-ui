@@ -1,21 +1,15 @@
 import React,{Component} from 'react';
 import {Form, Grid} from 'semantic-ui-react';
-import ComponentModel from '../model/component.model';
+import {connect} from 'react-redux';
+import {setDescription} from "../_store/actions/ComponentModelAction";
 
 class Body extends Component{
-    constructor(props){
-        super(props)
-        this.state = new ComponentModel();
-    }
-    componentWillMount(){
-        this.setState(new ComponentModel())
-    }
+
     onChange(e){
         e.preventDefault();
-        let model ={};
-        model[e.target.name] = e.target.value;
-        this.setState(model);
+        this.props.setDescription(e.target.value);
     }
+
     render(){
         return(
             <div className="body-content">
@@ -36,4 +30,11 @@ class Body extends Component{
         )
     }
 }
-export default Body;
+
+
+const mapDispatchToProps = dispatch => ({
+    setDescription(value){
+        dispatch(setDescription(value))
+    }
+});
+export default connect(null,mapDispatchToProps)(Body);

@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {Dimmer, Loader} from 'semantic-ui-react';
-import ContentComponent from "../content/Content";
 
 class LoadingComponent extends Component {
 
@@ -18,15 +17,16 @@ class LoadingComponent extends Component {
         this.setState({isLoading, maximized});
     }
     render(){
-
+        const height = window.innerHeight-49;
         return(
-            <ContentComponent headerName="Loading">
+            <div style={{height:height+'px'}}>
                 <Dimmer inverted active>
                     <Loader size='huge'/>
                 </Dimmer>
-            </ContentComponent>
+            </div>
         )
     }
 
 }
+
 export default LoadingComponent

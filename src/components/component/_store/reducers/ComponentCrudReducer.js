@@ -7,7 +7,8 @@ const initialState = {
     loading:false,
     loaded:false,
     error:'',
-    items:[]
+    items:[],
+    record:{}
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +19,8 @@ export default (state = initialState, action) => {
                 loading:true,
                 loaded:false,
                 error:'',
-                items:[]
+                items:[],
+                record:{}
             };
             break;
         case FETCH_DATA_FAILURE:
@@ -27,7 +29,8 @@ export default (state = initialState, action) => {
                 loading:false,
                 loaded:false,
                 error:action.payload,
-                items:[]
+                items:[],
+                record:{}
             };
             break;
         case FETCH_DATA_SUCCESS:
@@ -36,7 +39,8 @@ export default (state = initialState, action) => {
                 loading:false,
                 loaded:false,
                 error:'',
-                items:action.payload
+                items:action.payload,
+                record:{}
             };
             break;
         case POST_DATA_REQUEST:
@@ -45,7 +49,8 @@ export default (state = initialState, action) => {
                 loading:true,
                 loaded:false,
                 error:'',
-                items:action.payload
+                items:[],
+                record:action.payload
             };
             break;
         case POST_DATA_SUCCESS:
@@ -54,7 +59,8 @@ export default (state = initialState, action) => {
                 loading:false,
                 loaded:true,
                 error:'',
-                items:action.payload
+                items:[],
+                record:action.payload
             };
             break;
         case POST_DATA_FAILURE:
@@ -63,7 +69,8 @@ export default (state = initialState, action) => {
                 loading:false,
                 loaded:true,
                 error:action.payload,
-                items:[]
+                items:[],
+                record:{}
             };
             break;
         default:

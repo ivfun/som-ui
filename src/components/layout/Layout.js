@@ -8,6 +8,7 @@ import {
 import Routes from "../routes/Routes";
 
 import { connect } from 'react-redux'
+import HeaderComponent from "./sub-components/Header";
 
 class LayoutComponent extends Component {
     constructor(props){
@@ -49,7 +50,9 @@ class LayoutComponent extends Component {
                             </Menu.Item>
                         </Link>
                     </Sidebar>
+
                     <Sidebar.Pusher>
+                        <HeaderComponent/>
                         <Routes/>
                     </Sidebar.Pusher>
 

@@ -27,7 +27,7 @@ class Routes extends Component {
 
     render() {
         return (
-
+            <div>
                 <Switch>
 
                     <Route exact path="/" component={HomeComponentAsync}/>
@@ -35,6 +35,7 @@ class Routes extends Component {
                     <Route path="/component" component={ComponentComponentAsync}/>
                     <Route component={NoMatchComponent} />
                 </Switch>
+            </div>
 
         );
     }

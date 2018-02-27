@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea2b1102-2563-44fc-adae-91b57c8623ae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/_store/index.js" afterPath="$PROJECT_DIR$/src/components/_store/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/Component.js" afterPath="$PROJECT_DIR$/src/components/component/Component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/_store/actions/ComponentCrudAction.js" afterPath="$PROJECT_DIR$/src/components/component/_store/actions/ComponentCrudAction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/_store/actions/ComponentCrudAction.types.js" afterPath="$PROJECT_DIR$/src/components/component/_store/actions/ComponentCrudAction.types.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/_store/reducers/ComponentCrudReducer.js" afterPath="$PROJECT_DIR$/src/components/component/_store/reducers/ComponentCrudReducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/model/component.model.js" afterPath="$PROJECT_DIR$/src/components/component/model/component.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/services/Component.service.js" afterPath="$PROJECT_DIR$/src/components/component/services/Component.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/sub-components/Body.js" afterPath="$PROJECT_DIR$/src/components/component/sub-components/Body.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/component/sub-components/Footer.js" afterPath="$PROJECT_DIR$/src/components/component/sub-components/Footer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/services/htpp/http.service.js" afterPath="$PROJECT_DIR$/src/utils/services/htpp/http.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/loading/Loading.js" afterPath="$PROJECT_DIR$/src/components/loading/Loading.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,14 +28,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Footer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Footer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/component/sub-components/Footer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+            <state relative-caret-position="319">
+              <caret line="28" column="14" lean-forward="true" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Loading.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/loading/Loading.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -201,7 +201,6 @@
         <option value="$PROJECT_DIR$/src/components/component/services/Component.service.crud.js" />
         <option value="$PROJECT_DIR$/src/components/content/_store/reducers/contentReducer.js" />
         <option value="$PROJECT_DIR$/src/components/routes/Routes.js" />
-        <option value="$PROJECT_DIR$/src/components/loading/Loading.js" />
         <option value="$PROJECT_DIR$/src/components/service-order/services/ServiceOrder.service.crud.js" />
         <option value="$PROJECT_DIR$/src/components/service-order/services/ServiceOrder.service.js" />
         <option value="$PROJECT_DIR$/src/components/content/Content.css" />
@@ -222,6 +221,7 @@
         <option value="$PROJECT_DIR$/src/components/component/_store/reducers/ComponentCrudReducer.js" />
         <option value="$PROJECT_DIR$/src/components/component/services/Component.service.js" />
         <option value="$PROJECT_DIR$/src/components/component/sub-components/Footer.js" />
+        <option value="$PROJECT_DIR$/src/components/loading/Loading.js" />
       </list>
     </option>
   </component>
@@ -347,6 +347,13 @@
               <item name="react-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="loading" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="service-order" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -451,12 +458,12 @@
       <workItem from="1519405208285" duration="7414000" />
       <workItem from="1519602051762" duration="4473000" />
       <workItem from="1519644566940" duration="10668000" />
-      <workItem from="1519682565057" duration="12542000" />
+      <workItem from="1519682565057" duration="12717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105412000" />
+    <option name="totallyTimeSpent" value="105587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="7" width="1938" height="1043" extended-state="0" />
@@ -639,16 +646,6 @@
         <state relative-caret-position="272">
           <caret line="16" column="59" lean-forward="false" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/loading/Loading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -878,11 +875,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/component/sub-components/Footer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+        <state relative-caret-position="319">
+          <caret line="28" column="14" lean-forward="true" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/loading/Loading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

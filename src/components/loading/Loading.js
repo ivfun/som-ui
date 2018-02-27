@@ -22,7 +22,7 @@ class LoadingComponent extends Component {
         return(
             <ContentComponent headerName="Loading">
                 <Dimmer inverted active>
-                    <Loader size='huge'>{'Carregando...'}</Loader>
+                    <Loader size='huge'/>
                 </Dimmer>
             </ContentComponent>
         )

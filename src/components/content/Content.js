@@ -39,7 +39,7 @@ class ContentComponent extends Component{
     render(){
         let{maximized, toHome, isDashboard} = this.state;
         const widthSideBar =  maximized ? 0 : 150;
-        const height = window.innerHeight-32;
+        const height = window.innerHeight-42;
         const width = window.innerWidth - widthSideBar;
 
         if(toHome) {
@@ -48,7 +48,7 @@ class ContentComponent extends Component{
         }
 
         return(
-            <Segment basic size="massive" style={{height:height+'px', width:width+'px', marginTop:'-17px'}}>
+            <Segment basic style={{height:height+'px', width:width+'px', marginTop:'-7px'}}>
                 <div className="content" style={{height:(height-35)+'px'}}>
                     <div className="header-content" >
                         <Label className="header-title" ribbon>{this.state.headerName}</Label>

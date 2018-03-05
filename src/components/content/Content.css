@@ -1,6 +1,5 @@
 .content{
-    box-shadow: 0px 0px 6px black;
-    background-color: #efefef;
+    box-shadow: 0 0 6px black;
 }
 .header-content{
     padding:7px;

@@ -8,7 +8,14 @@ class ListComponent extends Component{
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Descrição</Table.HeaderCell>
-                        <Table.HeaderCell width={2}/>
+                        <Table.HeaderCell width={2} textAlign="center">
+                            <Button animated primary>
+                                <Button.Content style={{boxShadow:'none'}} visible>Novo Registro</Button.Content>
+                                <Button.Content style={{boxShadow:'none'}} hidden>
+                                    <Icon name='right arrow' />
+                                </Button.Content>
+                            </Button>
+                        </Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 

@@ -1,6 +1,6 @@
 import {
     FETCH_DATA_REQUEST, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS,
-    POST_DATA_REQUEST, POST_DATA_SUCCESS, POST_DATA_FAILURE
+    SAVE_DATA_REQUEST, SAVE_DATA_SUCCESS, SAVE_DATA_FAILURE
 } from '../actions/ComponentCrudAction.types'
 
 const initialState = {
@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
                 record:{}
             };
             break;
-        case POST_DATA_REQUEST:
+        case SAVE_DATA_REQUEST:
             state = {
                 ...state,
                 loading:true,
@@ -53,7 +53,7 @@ export default (state = initialState, action) => {
                 record:action.payload
             };
             break;
-        case POST_DATA_SUCCESS:
+        case SAVE_DATA_SUCCESS:
             state = {
                 ...state,
                 loading:false,
@@ -63,7 +63,7 @@ export default (state = initialState, action) => {
                 record:action.payload
             };
             break;
-        case POST_DATA_FAILURE:
+        case SAVE_DATA_FAILURE:
             state = {
                 ...state,
                 loading:false,

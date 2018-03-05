@@ -3,7 +3,7 @@ import {Form, Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {setDescription} from "../_store/actions/ComponentModelAction";
 
-class FormComponent extends Component{
+class AddComponent extends Component{
     onChange(e){
         e.preventDefault();
         this.props.setDescription(e.target.value);
@@ -35,4 +35,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(null,mapDispatchToProps)(FormComponent);
+export default connect(null,mapDispatchToProps)(AddComponent);

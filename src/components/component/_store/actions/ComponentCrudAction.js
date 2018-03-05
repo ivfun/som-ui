@@ -1,6 +1,6 @@
 import {
     FETCH_DATA_REQUEST, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS,
-    POST_DATA_REQUEST, POST_DATA_SUCCESS, POST_DATA_FAILURE
+    SAVE_DATA_REQUEST, SAVE_DATA_SUCCESS, SAVE_DATA_FAILURE
 } from './ComponentCrudAction.types'
 
 
@@ -15,15 +15,15 @@ export const fetchDataSuccess = (data)=>({
     type: FETCH_DATA_SUCCESS,
     payload:data
 });
-export const postDataRequest = (data)=>({
-    type:POST_DATA_REQUEST,
+export const saveDataRequest = (data)=>({
+    type:SAVE_DATA_REQUEST,
     payload:data
 });
-export const postDataSuccess = (data)=>({
-    type:POST_DATA_SUCCESS,
+export const saveDataSuccess = (data)=>({
+    type:SAVE_DATA_SUCCESS,
     payload:data
 });
-export const postDataFailure = (err)=>({
-    type:POST_DATA_FAILURE,
+export const saveDataFailure = (err)=>({
+    type:SAVE_DATA_FAILURE,
     payload:err.message
 });

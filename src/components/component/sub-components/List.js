@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
 import {Icon, Button, Table, Popup} from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {componentAdding, componentEditing} from "../_store/actions/ComponentScreenAction";
 
 class ListComponent extends Component{
+    add(e){
+        e.preventDefault();
+        this.props.componentAdding();
+    }
+    edit(e){
+        e.preventDefault();
+        this.props.componentEditing();
+    }
     render(){
         return(
             <Table striped>
@@ -9,7 +19,7 @@ class ListComponent extends Component{
                     <Table.Row>
                         <Table.HeaderCell>Descrição</Table.HeaderCell>
                         <Table.HeaderCell width={2} textAlign="center">
-                            <Button animated primary>
+                            <Button animated primary onClick={this.add.bind(this)}>
                                 <Button.Content style={{boxShadow:'none'}} visible>Novo Registro</Button.Content>
                                 <Button.Content style={{boxShadow:'none'}} hidden>
                                     <Icon name='right arrow' />
@@ -26,7 +36,7 @@ class ListComponent extends Component{
                             <Button.Group>
                                 <Popup inverted
                                        trigger={
-                                           <Button inverted color='blue'>
+                                           <Button inverted color='blue' onClick={this.edit.bind(this)}>
                                                <Icon name='edit' size='large'/>
                                            </Button>
                                        }
@@ -51,5 +61,14 @@ class ListComponent extends Component{
         )
     }
 }
+const mapDispatchToProps = dispatch => ({
+    componentAdding(){
+        dispatch(componentAdding())
+    },
+    componentEditing(){
+        dispatch(componentEditing())
+    }
+});
 
-export default ListComponent;
+
+export default connect(null, mapDispatchToProps)(ListComponent);

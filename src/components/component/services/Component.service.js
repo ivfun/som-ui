@@ -1,8 +1,8 @@
 
 import store from '../../_store/store';
 import {
-    fetchDataFailure, fetchDataRequest, fetchDataSuccess, postDataFailure,
-    postDataRequest, postDataSuccess
+    fetchDataFailure, fetchDataRequest, fetchDataSuccess, saveDataFailure,
+    saveDataRequest, saveDataSuccess
 } from "../_store/actions/ComponentCrudAction";
 import ComponentServiceCrud from './Component.service.crud';
 
@@ -22,18 +22,22 @@ class ComponentService{
                 )
         })
     }
-    save(objectToSave){
+    create(objectToSave){
         this._store.dispatch((dispatch)=>{
-            dispatch(postDataRequest(objectToSave));
-            ComponentServiceCrud.create(objectToSave)
+            dispatch(saveDataRequest(objectToSave));
+
+            const {friendly_id} = objectToSave;
+            let promise = friendly_id >= 0 ? ComponentServiceCrud.update(objectToSave):ComponentServiceCrud.create(objectToSave);
+            promise
                 .then(
-                    data=>dispatch(postDataSuccess(data))
+                    data=>dispatch(saveDataSuccess(data))
                 )
                 .catch(
-                    error=>dispatch(postDataFailure(error))
+                    error=>dispatch(saveDataFailure(error))
                 )
         })
     }
+
 
 }
 

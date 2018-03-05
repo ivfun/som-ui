@@ -2,31 +2,54 @@ import React,{Component} from 'react';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import ComponentService from '../services/Component.service';
+import {componentListing} from "../_store/actions/ComponentScreenAction";
 
 class Footer extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            listing:props.listing
+        }
+    }
+
     componentWillReceiveProps(newProps){
         this.setStateFromProps(newProps);
     }
     setStateFromProps(props){
-        let {dispatch,...objectToSave} = props;
-        this.setState({objectToSave});
+        let {dispatch, listing, ...objectToSave} = props;
+        this.setState({objectToSave, listing});
     }
-    save(e){
+    create_update(e){
         e.preventDefault();
-        ComponentService.save(this.state.objectToSave)
+        ComponentService.create(this.state.objectToSave)
+    }
+    cancel(e){
+        e.preventDefault();
+        this.props.componentListing();
     }
 
     render(){
+        const {listing} = this.state;
+
+        if(listing)
+            return null;
+
         return(
             <div className="footer-content">
-                <Button basic loading={false} type="button">Cancelar</Button>
-                <Button secondary loading={false} type="submit" onClick={this.save.bind(this)}>Salvar</Button>
+                <Button basic loading={false} type="button" onClick={this.cancel.bind(this)}>Cancelar</Button>
+                <Button secondary loading={false} type="submit" onClick={this.create_update.bind(this)}>Salvar</Button>
             </div>
         )
     }
 }
 
-const mapStateToProps = ({component:{componentModel}}) => {
-    return componentModel;
+const mapStateToProps = ({component:{componentModel, componentScreen}}) => {
+    return {...componentModel, listing:componentScreen.listing};
 };
-export default connect(mapStateToProps)(Footer);
+const mapDispatchToProps = dispatch => ({
+    componentListing(){
+        dispatch(componentListing())
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

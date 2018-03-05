@@ -13,8 +13,8 @@ class GenericCrud{
     create(data){
         return HttpService.post(this._url,data);
     }
-    update(id){
-        return HttpService.put(this._url+id);
+    update(data){
+        return HttpService.put(this._url+'/'+data.id);
     }
     remove(id){
         return HttpService.delete(this._url+id);

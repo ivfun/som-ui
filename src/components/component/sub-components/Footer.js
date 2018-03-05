@@ -25,6 +25,7 @@ class Footer extends Component{
     }
     cancel(e){
         e.preventDefault();
+        ComponentService.findAll();
         this.props.componentListing();
     }
 

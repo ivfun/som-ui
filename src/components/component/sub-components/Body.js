@@ -9,9 +9,9 @@ class Body extends Component{
     constructor(props){
         super(props);
         this.state ={
-            editing:false,
-            listing:true,
-            adding:false
+            editing:props.editing,
+            listing:props.listing,
+            adding:props.adding
         }
     }
     componentWillReceiveProps(newProps){

@@ -5,6 +5,7 @@ import {
     saveDataRequest, saveDataSuccess
 } from "../_store/actions/ComponentCrudAction";
 import ComponentServiceCrud from './Component.service.crud';
+import {componentListing} from "../_store/actions/ComponentScreenAction";
 
 class ComponentService{
     constructor(store){
@@ -22,7 +23,7 @@ class ComponentService{
                 )
         })
     }
-    create_update(objectToSave){
+    create_update(objectToSave={}){
         this._store.dispatch((dispatch)=>{
             dispatch(saveDataRequest(objectToSave));
 
@@ -30,7 +31,11 @@ class ComponentService{
             let promise = id && id !== '' ? ComponentServiceCrud.update(objectToSave):ComponentServiceCrud.create(objectToSave);
             promise
                 .then(
-                    data=>dispatch(saveDataSuccess(data))
+                    data=>{
+                        dispatch(saveDataSuccess(data));
+                        dispatch(componentListing());
+                        this.findAll();
+                    }
                 )
                 .catch(
                     error=>dispatch(saveDataFailure(error))

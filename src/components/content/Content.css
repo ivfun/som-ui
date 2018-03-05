@@ -37,3 +37,6 @@
 .close-content:active{
     color: white;
 }
+.or:before{
+    content: 'ou' !important;
+}

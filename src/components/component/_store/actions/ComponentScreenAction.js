@@ -3,8 +3,9 @@ import {
 } from './ComponentScreenAction.types'
 
 
-export const componentEditing = ()=>({
-    type: COMPONENT_EDITING
+export const componentEditing = (item)=>({
+    type: COMPONENT_EDITING,
+    payload:item
 });
 export const componentAdding = ()=>({
     type: COMPONENT_ADDING

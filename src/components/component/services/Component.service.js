@@ -22,12 +22,12 @@ class ComponentService{
                 )
         })
     }
-    create(objectToSave){
+    create_update(objectToSave){
         this._store.dispatch((dispatch)=>{
             dispatch(saveDataRequest(objectToSave));
 
-            const {friendly_id} = objectToSave;
-            let promise = friendly_id >= 0 ? ComponentServiceCrud.update(objectToSave):ComponentServiceCrud.create(objectToSave);
+            const {id} = objectToSave;
+            let promise = id && id !== '' ? ComponentServiceCrud.update(objectToSave):ComponentServiceCrud.create(objectToSave);
             promise
                 .then(
                     data=>dispatch(saveDataSuccess(data))

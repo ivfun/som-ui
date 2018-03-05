@@ -1,4 +1,4 @@
-import {SET_DESCRIPTION} from "../actions/ComponentModelAction.types";
+import {SET_DESCRIPTION, SET_ID} from "../actions/ComponentModelAction.types";
 
 const initialState = {
     description:''
@@ -10,6 +10,12 @@ export default (state = initialState, action) => {
             state = {
                 ...state,
                 description:action.payload
+            };
+            break;
+        case SET_ID:
+            state = {
+                ...state,
+                id:action.payload
             };
             break;
         default:

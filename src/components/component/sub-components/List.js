@@ -4,15 +4,33 @@ import {connect} from 'react-redux';
 import {componentAdding, componentEditing} from "../_store/actions/ComponentScreenAction";
 
 class ListComponent extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            items:props.items
+        }
+    }
+
+    componentWillReceiveProps(newProps){
+        this.setStateFromProps(newProps);
+    }
+    setStateFromProps(props){
+
+        this.setState({
+            items:props.items
+        });
+    }
+
     add(e){
         e.preventDefault();
         this.props.componentAdding();
     }
-    edit(e){
-        e.preventDefault();
-        this.props.componentEditing();
+    edit(item){
+        this.props.componentEditing(item);
     }
     render(){
+        let {items} = this.state;
+
         return(
             <Table striped>
                 <Table.Header>
@@ -30,45 +48,52 @@ class ListComponent extends Component{
                 </Table.Header>
 
                 <Table.Body>
-                    <Table.Row>
-                        <Table.Cell>Teste</Table.Cell>
-                        <Table.Cell width={2}>
-                            <Button.Group>
-                                <Popup inverted
-                                       trigger={
-                                           <Button inverted color='blue' onClick={this.edit.bind(this)}>
-                                               <Icon name='edit' size='large'/>
-                                           </Button>
-                                       }
-                                       content='Editar'
-                                />
-                                <Button.Or/>
-                                <Popup inverted
-                                       trigger={
-                                           <Button inverted color='red'>
-                                               <Icon name='trash outline' size='large'/>
-                                           </Button>
-                                       }
-                                       content='Remover'
-                                />
+                    {items.map(item=>
+                        <Table.Row key={item.id}>
+                            <Table.Cell>{item.description}</Table.Cell>
+                            <Table.Cell width={2}>
+                                <Button.Group>
+                                    <Popup inverted
+                                           trigger={
+                                               <Button inverted color='blue' onClick={this.edit.bind(this, item)}>
+                                                   <Icon name='edit' size='large'/>
+                                               </Button>
+                                           }
+                                           content='Editar'
+                                    />
+                                    <Button.Or/>
+                                    <Popup inverted
+                                           trigger={
+                                               <Button inverted color='red'>
+                                                   <Icon name='trash outline' size='large'/>
+                                               </Button>
+                                           }
+                                           content='Remover'
+                                    />
 
-                            </Button.Group>
-                        </Table.Cell>
-                    </Table.Row>
+                                </Button.Group>
+                            </Table.Cell>
+                        </Table.Row>
+                    )}
                 </Table.Body>
             </Table>
 
         )
     }
 }
+
+const mapStateToProps = ({component:{component}}) => {
+    return component
+};
+
 const mapDispatchToProps = dispatch => ({
     componentAdding(){
         dispatch(componentAdding())
     },
-    componentEditing(){
-        dispatch(componentEditing())
+    componentEditing(item){
+        dispatch(componentEditing(item))
     }
 });
 
 
-export default connect(null, mapDispatchToProps)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);

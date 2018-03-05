@@ -3,7 +3,8 @@ import {COMPONENT_LISTING, COMPONENT_ADDING, COMPONENT_EDITING} from "../actions
 const initialState = {
     listing:true,
     adding:false,
-    editing:false
+    editing:false,
+    editElem:{}
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,8 @@ export default (state = initialState, action) => {
                 ...state,
                 editing:true,
                 adding:false,
-                listing:false
+                listing:false,
+                editElem:action.payload
             };
             break;
         case COMPONENT_ADDING:
@@ -21,7 +23,8 @@ export default (state = initialState, action) => {
                 ...state,
                 editing:false,
                 adding:true,
-                listing:false
+                listing:false,
+                editElem:{}
             };
             break;
         case COMPONENT_LISTING:
@@ -29,7 +32,8 @@ export default (state = initialState, action) => {
                 ...state,
                 editing:false,
                 adding:false,
-                listing:true
+                listing:true,
+                editElem:{}
             };
             break;
         default:

@@ -21,7 +21,7 @@ class Footer extends Component{
     }
     create_update(e){
         e.preventDefault();
-        ComponentService.create(this.state.objectToSave)
+        ComponentService.create_update(this.state.objectToSave)
     }
     cancel(e){
         e.preventDefault();

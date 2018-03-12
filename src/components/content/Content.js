@@ -17,9 +17,6 @@ class ContentComponent extends Component{
             isDashboard:props.isDashboard
         }
     }
-    componentWillMount(){
-        this.props.normalizeContent()
-    }
     componentWillReceiveProps(newProps){
         this.setStateFromProps(newProps);
     }

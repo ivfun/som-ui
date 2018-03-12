@@ -1,6 +1,7 @@
 import {
     FETCH_DATA_REQUEST, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS,
-    SAVE_DATA_REQUEST, SAVE_DATA_SUCCESS, SAVE_DATA_FAILURE
+    SAVE_DATA_REQUEST, SAVE_DATA_SUCCESS, SAVE_DATA_FAILURE, REMOVE_DATA_REQUEST, REMOVE_DATA_SUCCESS,
+    REMOVE_DATA_FAILURE
 } from '../actions/ComponentCrudAction.types'
 
 const initialState = {
@@ -73,6 +74,37 @@ export default (state = initialState, action) => {
                 record:{}
             };
             break;
+        case REMOVE_DATA_REQUEST:
+            state = {
+                ...state,
+                loading:true,
+                loaded:false,
+                error:'',
+                items:[],
+                record:{}
+            };
+            break;
+        case REMOVE_DATA_SUCCESS:
+            state = {
+                ...state,
+                loading:false,
+                loaded:true,
+                error:'',
+                items:[],
+                record:action.payload
+            };
+            break;
+        case REMOVE_DATA_FAILURE:
+            state = {
+                ...state,
+                loading:false,
+                loaded:true,
+                error:action.payload,
+                items:[],
+                record:{}
+            };
+            break;
+
         default:
             state = {...state};
             break

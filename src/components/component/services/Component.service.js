@@ -1,7 +1,7 @@
 
 import store from '../../_store/store';
 import {
-    fetchDataAsync, saveDataAsync
+    fetchDataAsync, removeDataAsync, saveDataAsync
 } from "../_store/actions/ComponentCrudAction";
 
 class ComponentService{
@@ -13,6 +13,9 @@ class ComponentService{
     }
     create_update(objectToSave={}){
         this._store.dispatch(saveDataAsync(objectToSave));
+    }
+    remove(id){
+        this._store.dispatch(removeDataAsync(id));
     }
 
 

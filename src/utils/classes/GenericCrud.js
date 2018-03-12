@@ -1,4 +1,4 @@
-import HttpService from '../services/htpp/http.service';
+import HttpService from '../services/http/http.service';
 
 class GenericCrud{
     constructor(url){

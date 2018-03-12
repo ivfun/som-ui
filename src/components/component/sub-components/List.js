@@ -49,7 +49,8 @@ class ListComponent extends Component{
                 <Table striped>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Descrição</Table.HeaderCell>
+                            <Table.HeaderCell width={2}>ID</Table.HeaderCell>
+                            <Table.HeaderCell width={12}>Descrição</Table.HeaderCell>
                             <Table.HeaderCell width={2} textAlign="center">
                                 <Button animated primary onClick={this.add.bind(this)}>
                                     <Button.Content style={{boxShadow:'none'}} visible>Novo Registro</Button.Content>
@@ -64,7 +65,8 @@ class ListComponent extends Component{
                     <Table.Body>
                         {items.slice(start,end ).map(item=>
                             <Table.Row key={item.id}>
-                                <Table.Cell>{item.description}</Table.Cell>
+                                <Table.Cell width={2}>{item.friendly_id}</Table.Cell>
+                                <Table.Cell width={12}>{item.description}</Table.Cell>
                                 <Table.Cell width={2}>
                                     <Button.Group>
                                         <Popup inverted

@@ -8,7 +8,7 @@ class GenericCrud{
         return HttpService.get(this._url);
     }
     findById(id){
-        return HttpService.get(this._url+id);
+        return HttpService.get(this._url+'/'+id);
     }
     create(data){
         return HttpService.post(this._url,data);

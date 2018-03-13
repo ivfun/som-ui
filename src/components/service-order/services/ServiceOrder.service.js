@@ -1,5 +1,5 @@
 
-import store from '../../_store/store';
+import store from '../../../_store/store';
 import {fetchDataAsync} from "../../component/_store/actions/ComponentCrudAction";
 
 class ServiceOrderService{

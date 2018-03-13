@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LayoutComponent from '../layout/Layout';
-import store  from '../_store/store';
+import store  from '../../_store/store';
 import { Provider } from 'react-redux'
 
 

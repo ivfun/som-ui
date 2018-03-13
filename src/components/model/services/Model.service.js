@@ -1,5 +1,5 @@
 
-import store from '../../_store/store';
+import store from '../../../_store/store';
 import {
     fetchDataAsync, removeDataAsync, saveDataAsync
 } from "../_store/actions/ModelCrudAction";

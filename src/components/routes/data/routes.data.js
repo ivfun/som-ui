@@ -22,6 +22,16 @@ const ProblemComponentAsync = Loadable({
     loading: LoadingComponent,
 });
 
+const CustomerComponentAsync = Loadable({
+    loader: () => import('../../customer/Customer'),
+    loading: LoadingComponent,
+});
+
+const ModelComponentAsync = Loadable({
+    loader: () => import('../../model/Model'),
+    loading: LoadingComponent,
+});
+
 export const routes = ()=>{
     return [
         {
@@ -43,6 +53,16 @@ export const routes = ()=>{
             path:'/problem',
             loadable:ProblemComponentAsync,
             description:'Problema'
+        },
+        {
+            path:'/customer',
+            loadable:CustomerComponentAsync,
+            description:'Cliente'
+        },
+        {
+            path:'/model',
+            loadable:ModelComponentAsync,
+            description:'Modelo'
         },
     ];
 };

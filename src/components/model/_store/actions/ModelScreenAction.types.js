@@ -1,0 +1,3 @@
+export const MODEL_EDITING = 'MODEL_EDITING';
+export const MODEL_ADDING  = 'MODEL_ADDING';
+export const MODEL_LISTING  = 'MODEL_LISTING';

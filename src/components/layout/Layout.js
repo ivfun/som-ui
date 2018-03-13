@@ -4,7 +4,7 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom';
-
+import {routes} from '../routes/data/routes.data';
 import Routes from "../routes/Routes";
 
 import { connect } from 'react-redux'
@@ -39,26 +39,13 @@ class LayoutComponent extends Component {
                                 Home
                             </Menu.Item>
                         </Link>
-                        <Link to="/service-order">
-                            <Menu.Item name='service-order' link>
-                                Ordem de Serviço
-                            </Menu.Item>
-                        </Link>
-                        <Link to="/component">
-                            <Menu.Item name='component' link>
-                                Componente
-                            </Menu.Item>
-                        </Link>
-                        <Link to="/solution">
-                            <Menu.Item name='solution' link>
-                                Solução
-                            </Menu.Item>
-                        </Link>
-                        <Link to="/problem">
-                            <Menu.Item name='problem' link>
-                                Problema
-                            </Menu.Item>
-                        </Link>
+                        {routes().map(m=>
+                                <Link to={m.path}>
+                                    <Menu.Item name={m.path} link>
+                                        {m.description}
+                                    </Menu.Item>
+                                </Link>
+                        )}
                     </Sidebar>
 
                     <Sidebar.Pusher>

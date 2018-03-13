@@ -49,6 +49,11 @@ class LayoutComponent extends Component {
                                 Componente
                             </Menu.Item>
                         </Link>
+                        <Link to="/solution">
+                            <Menu.Item name='solution' link>
+                                Solução
+                            </Menu.Item>
+                        </Link>
                     </Sidebar>
 
                     <Sidebar.Pusher>

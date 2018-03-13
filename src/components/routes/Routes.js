@@ -23,6 +23,11 @@ const ComponentComponentAsync = Loadable({
     loading: LoadingComponent,
 });
 
+const SolutionComponentAsync = Loadable({
+    loader: () => import('../solution/Solution'),
+    loading: LoadingComponent,
+});
+
 class Routes extends Component {
 
     render() {
@@ -33,6 +38,7 @@ class Routes extends Component {
                     <Route exact path="/" component={HomeComponentAsync}/>
                     <Route path="/service-order" component={ServiceOrderComponentAsync}/>
                     <Route path="/component" component={ComponentComponentAsync}/>
+                    <Route path="/solution" component={SolutionComponentAsync}/>
                     <Route component={NoMatchComponent} />
                 </Switch>
             </div>

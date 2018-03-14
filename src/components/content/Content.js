@@ -84,6 +84,7 @@ class ContentComponent extends Component{
     }
 }
 const mapStateToProps = ({content:{content, search}}) => {
+    debugger;
     return {
         maximized: content.maximized,
         toHome: content.toHome,

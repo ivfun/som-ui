@@ -22,24 +22,24 @@ class ModelComponent extends Component{
         this.setStateFromProps(newProps);
     }
     setStateFromProps(props){
-        let {loading} = props;
-        this.setState({loading});
+        let {loading, listing} = props;
+        this.setState({loading, listing});
     }
 
     render(){
-        const {loading} = this.state;
+        const {loading, listing} = this.state;
         if(loading)
             return (<LoadingComponent/>);
         return(
-            <ContentComponent headerName="Modelos">
+            <ContentComponent headerName="Modelos" listing={listing}>
                <Body/>
                <Footer/>
             </ContentComponent>
         )
     }
 }
-const mapStateToProps = ({model:{model}}) => {
-    return model
+const mapStateToProps = ({model:{model, modelScreen}}) => {
+    return {...model, listing:modelScreen.listing}
 };
 
 

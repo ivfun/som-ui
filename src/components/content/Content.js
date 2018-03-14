@@ -19,15 +19,16 @@ class ContentComponent extends Component{
             headerName:props.headerName,
             maximized:false,
             toHome:false,
-            isDashboard:props.isDashboard
+            isDashboard:props.isDashboard,
+            listing:props.listing
         }
     }
     componentWillReceiveProps(newProps){
         this.setStateFromProps(newProps);
     }
     setStateFromProps(props){
-        let {maximized, toHome} = props;
-        this.setState({maximized, toHome})
+        let {maximized, toHome, listing} = props;
+        this.setState({maximized, toHome, listing})
 
 
     }
@@ -42,7 +43,7 @@ class ContentComponent extends Component{
         this.props.setTextToSearch(e.target.value);
     }
     render(){
-        let{maximized, toHome, isDashboard} = this.state;
+        let{maximized, toHome, isDashboard, listing} = this.state;
         const widthSideBar =  maximized ? 0 : 150;
         const height = window.innerHeight-42;
         const width = window.innerWidth - widthSideBar;
@@ -59,7 +60,7 @@ class ContentComponent extends Component{
                         <Label className="header-title" ribbon>{this.state.headerName}</Label>
 
 
-                        {isDashboard?null:<Input className="search-items" size='mini' onChange={this.onChangeSearch.bind(this)} icon={{ name: 'search' }} placeholder='Buscar...'/>}
+                        {isDashboard || !listing? null:<Input className="search-items" size='mini' onChange={this.onChangeSearch.bind(this)} icon={{ name: 'search' }} placeholder='Buscar...'/>}
                         {isDashboard?null:<Icon as='i' className="close-content" name='window close' size='large' link onClick={()=>this.handleClose()}/>}
 
                         {maximized ?

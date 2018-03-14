@@ -22,24 +22,24 @@ class CustomerComponent extends Component{
         this.setStateFromProps(newProps);
     }
     setStateFromProps(props){
-        let {loading} = props;
-        this.setState({loading});
+        let {loading, listing} = props;
+        this.setState({loading, listing});
     }
 
     render(){
-        const {loading} = this.state;
+        const {loading, listing} = this.state;
         if(loading)
             return (<LoadingComponent/>);
         return(
-            <ContentComponent headerName="Clientes">
+            <ContentComponent headerName="Clientes" listing={listing}>
                <Body/>
                <Footer/>
             </ContentComponent>
         )
     }
 }
-const mapStateToProps = ({customer:{customer}}) => {
-    return customer
+const mapStateToProps = ({customer:{customer, customerScreen}}) => {
+    return {...customer,listing:customerScreen.listing}
 };
 
 

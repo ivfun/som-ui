@@ -4,7 +4,7 @@ import {
 
 const initialState = {
     text:'',
-    field:''
+    field:'friendly_id'
 };
 
 export default (state = initialState, action) => {

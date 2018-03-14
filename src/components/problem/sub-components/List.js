@@ -5,13 +5,14 @@ import {problemAdding, problemEditing} from "../_store/actions/ProblemScreenActi
 import PaginationCustomization from "../../pagination/Pagination";
 import ProblemService from '../services/Problem.service';
 import {setFieldToSearch} from "../../content/_store/actions/searchAction";
+import {getItemsFiltered} from "../../../utils/functions/search/search";
 class ListComponent extends Component{
     constructor(props){
         super(props);
         this.state = {
             items:props.items,
             activePage: props.activePage,
-            activeColumn:''
+            activeColumn:props.activeColumn
         }
     }
 
@@ -55,11 +56,12 @@ class ListComponent extends Component{
                 <Table striped celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell width={2} style={{cursor:'pointer'}} onClick={this.handleSearchBy('id')}>
-                                ID{activeColumn === 'id' ? <Icon name='pin' style={{float:'right'}} />:null}
+                            <Table.HeaderCell width={2} style={{cursor:'pointer'}} onClick={this.handleSearchBy('friendly_id')}>
+                                {activeColumn === 'friendly_id' ? <Icon name='filter'/>:null}ID
                             </Table.HeaderCell>
                             <Table.HeaderCell width={12} style={{cursor:'pointer'}} onClick={this.handleSearchBy('description')}>
-                                Descrição{activeColumn === 'description' ? <Icon name='pin' style={{float:'right'}} />:null}
+                                {activeColumn === 'description' ? <Icon name='filter'/>:null}
+                                Descrição
                             </Table.HeaderCell>
                             <Table.HeaderCell width={2} textAlign="center">
                                 <Button animated primary onClick={this.add.bind(this)}>
@@ -110,16 +112,10 @@ class ListComponent extends Component{
 }
 
 const mapStateToProps = ({problem:{problem}, pagination, content:{search}} ) => {
-    let items;
-    if(search.text !== '' )
-        items = problem.items.filter(f=>f[search.field].toLowerCase().includes(search.text.toLowerCase()));
-    else
-        items = problem.items;
-
-
     return {
-        items,
-        activePage:pagination.activePage
+        items:getItemsFiltered(problem.items, search),
+        activePage:pagination.activePage,
+        activeColumn: search.field
     }
 };
 

@@ -9,7 +9,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case CUSTOMER_ADDING:
+        case CUSTOMER_EDITING:
             state = {
                 ...state,
                 editing:true,
@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
                 editElem:action.payload
             };
             break;
-        case CUSTOMER_EDITING:
+        case CUSTOMER_ADDING:
             state = {
                 ...state,
                 editing:false,

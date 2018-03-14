@@ -4,12 +4,15 @@ import {connect} from 'react-redux';
 import {modelAdding, modelEditing} from "../_store/actions/ModelScreenAction";
 import PaginationCustomization from "../../pagination/Pagination";
 import ModelService from '../services/Model.service';
+import {setFieldToSearch} from "../../content/_store/actions/searchAction";
+import {getItemsFiltered} from "../../../utils/functions/search/search";
 class ListComponent extends Component{
     constructor(props){
         super(props);
         this.state = {
             items:props.items,
-            activePage: props.activePage
+            activePage: props.activePage,
+            activeColumn:props.activeColumn
         }
     }
 
@@ -35,9 +38,14 @@ class ListComponent extends Component{
         const {id} = item;
         ModelService.remove(id);
     }
+    handleSearchBy = clickedColumn => () => {
+        this.setState({activeColumn:clickedColumn});
+        this.props.setFieldToSearch(clickedColumn);
+    };
+
 
     render(){
-        let {items, activePage} = this.state;
+        let {items, activePage, activeColumn} = this.state;
 
         const itemsByPage = 7;
         const totalPages = Math.ceil(items.length / itemsByPage);
@@ -49,8 +57,13 @@ class ListComponent extends Component{
                 <Table striped celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell width={2}>ID</Table.HeaderCell>
-                            <Table.HeaderCell width={12}>Descrição</Table.HeaderCell>
+                            <Table.HeaderCell width={2} style={{cursor:'pointer'}} onClick={this.handleSearchBy('friendly_id')}>
+                                {activeColumn === 'friendly_id' ? <Icon name='filter'/>:null}ID
+                            </Table.HeaderCell>
+                            <Table.HeaderCell width={12} style={{cursor:'pointer'}} onClick={this.handleSearchBy('description')}>
+                                {activeColumn === 'description' ? <Icon name='filter'/>:null}
+                                Descrição
+                            </Table.HeaderCell>
                             <Table.HeaderCell width={2} textAlign="center">
                                 <Button animated primary onClick={this.add.bind(this)}>
                                     <Button.Content style={{boxShadow:'none'}} visible>Novo Registro</Button.Content>
@@ -99,8 +112,12 @@ class ListComponent extends Component{
     }
 }
 
-const mapStateToProps = ({model:{model}, pagination} ) => {
-    return {...model, ...pagination}
+const mapStateToProps = ({model:{model}, pagination, content:{search}} ) => {
+    return {
+        items:getItemsFiltered(model.items, search),
+        activePage:pagination.activePage,
+        activeColumn: search.field
+    }
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -109,6 +126,9 @@ const mapDispatchToProps = dispatch => ({
     },
     modelEditing(item){
         dispatch(modelEditing(item))
+    },
+    setFieldToSearch(key){
+        dispatch(setFieldToSearch(key))
     }
 });
 

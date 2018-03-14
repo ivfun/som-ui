@@ -18,11 +18,16 @@ class PaginationCustomization extends Component {
         };
 
     }
+    componentWillReceiveProps(newProps){
+        const {totalPages} = newProps;
+        this.setState({totalPages});
+    }
 
     handlePaginationChange = (e, { activePage }) => {
         this.props.changedPage(activePage);
         this.setState({ activePage });
     };
+
 
     render() {
         const {

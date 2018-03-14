@@ -1,6 +1,10 @@
 .content{
     box-shadow: 0 0 6px black;
 }
+.search-items{
+    width: 70%;
+    margin-left: 100px;
+}
 .header-content{
     padding:7px;
     font-size: medium;

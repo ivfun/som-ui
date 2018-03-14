@@ -59,8 +59,10 @@ class ContentComponent extends Component{
                     <div className="header-content" >
                         <Label className="header-title" ribbon>{this.state.headerName}</Label>
                         <Input
+                            className="search-items"
+                            size='mini'
                             onChange={this.onChangeSearch.bind(this)}
-                            icon={{ name: 'search', circular: true, link: true }}
+                            icon={{ name: 'search' }}
                             placeholder='Buscar...'
                         />
                         {isDashboard?'':<Icon as='i' className="close-content" name='window close' size='large' link onClick={()=>this.handleClose()}/>}

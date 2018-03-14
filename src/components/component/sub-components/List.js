@@ -46,7 +46,7 @@ class ListComponent extends Component{
 
         return(
             <div>
-                <Table striped>
+                <Table striped celled>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell width={2} link>ID</Table.HeaderCell>
@@ -101,8 +101,8 @@ class ListComponent extends Component{
 
 const mapStateToProps = ({component:{component}, pagination, content:{search}} ) => {
     let items;
-    if(search.text !== '')
-        items = component.items.filter(f=>f[search.field!==''?search.field:'description'].toLowerCase() === search.text.toLowerCase());
+    if(search.text !== '' )
+        items = component.items.filter(f=>f[search.field].toLowerCase().includes(search.text.toLowerCase()));
     else
         items = component.items;
 

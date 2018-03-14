@@ -46,7 +46,7 @@ class ListComponent extends Component{
 
         return(
             <div>
-                <Table striped>
+                <Table striped celled>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell width={2}>ID</Table.HeaderCell>

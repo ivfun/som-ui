@@ -19,18 +19,18 @@ class ContentComponent extends Component{
             headerName:props.headerName,
             maximized:false,
             toHome:false,
-            isDashboard:props.isDashboard
+            isDashboard:props.isDashboard,
+            showSearch:false
         }
     }
     componentWillReceiveProps(newProps){
         this.setStateFromProps(newProps);
     }
     setStateFromProps(props){
-        let {maximized, toHome} = props;
-        if(maximized !== this.state.maximized)
-            this.setState({maximized});
-        if(toHome)
-            this.setState({toHome:true})
+        let {maximized, toHome, showSearch} = props;
+        this.setState({maximized, toHome, showSearch})
+
+
     }
     handleClose(){
         this.props.redirectToHome();
@@ -43,7 +43,7 @@ class ContentComponent extends Component{
         this.props.setTextToSearch(e.target.value);
     }
     render(){
-        let{maximized, toHome, isDashboard} = this.state;
+        let{maximized, toHome, isDashboard, showSearch} = this.state;
         const widthSideBar =  maximized ? 0 : 150;
         const height = window.innerHeight-42;
         const width = window.innerWidth - widthSideBar;
@@ -58,13 +58,17 @@ class ContentComponent extends Component{
                 <div className="content" style={{height:(height-35)+'px'}}>
                     <div className="header-content" >
                         <Label className="header-title" ribbon>{this.state.headerName}</Label>
-                        <Input
-                            className="search-items"
-                            size='mini'
-                            onChange={this.onChangeSearch.bind(this)}
-                            icon={{ name: 'search' }}
-                            placeholder='Buscar...'
-                        />
+                        {showSearch?
+                            <Input
+                                className="search-items"
+                                size='mini'
+                                onChange={this.onChangeSearch.bind(this)}
+                                icon={{ name: 'search' }}
+                                placeholder='Buscar...'
+                            />:
+                            null
+                        }
+
                         {isDashboard?'':<Icon as='i' className="close-content" name='window close' size='large' link onClick={()=>this.handleClose()}/>}
 
                         {maximized ?
@@ -79,10 +83,11 @@ class ContentComponent extends Component{
         )
     }
 }
-const mapStateToProps = ({content:{content}}) => {
+const mapStateToProps = ({content:{content, search}}) => {
     return {
         maximized: content.maximized,
-        toHome: content.toHome
+        toHome: content.toHome,
+        showSearch: search.field !== ''
     }
 };
 

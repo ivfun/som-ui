@@ -4,12 +4,14 @@ import {connect} from 'react-redux';
 import {solutionAdding, solutionEditing} from "../_store/actions/SolutionScreenAction";
 import PaginationCustomization from "../../pagination/Pagination";
 import SolutionService from '../services/Solution.service';
+import {setFieldToSearch} from "../../content/_store/actions/searchAction";
 class ListComponent extends Component{
     constructor(props){
         super(props);
         this.state = {
             items:props.items,
-            activePage: props.activePage
+            activePage: props.activePage,
+            activeColumn:''
         }
     }
 
@@ -35,9 +37,13 @@ class ListComponent extends Component{
         const {id} = item;
         SolutionService.remove(id);
     }
+    handleSearchBy = clickedColumn => () => {
+        this.setState({activeColumn:clickedColumn});
+        this.props.setFieldToSearch(clickedColumn);
+    };
 
     render(){
-        let {items, activePage} = this.state;
+        let {items, activePage, activeColumn} = this.state;
 
         const itemsByPage = 7;
         const totalPages = Math.ceil(items.length / itemsByPage);
@@ -49,8 +55,12 @@ class ListComponent extends Component{
                 <Table striped celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell width={2}>ID</Table.HeaderCell>
-                            <Table.HeaderCell width={12}>Descrição</Table.HeaderCell>
+                            <Table.HeaderCell width={2} style={{cursor:'pointer'}} onClick={this.handleSearchBy('id')}>
+                                ID{activeColumn === 'id' ? <Icon name='pin' style={{float:'right'}} />:null}
+                            </Table.HeaderCell>
+                            <Table.HeaderCell width={12} style={{cursor:'pointer'}} onClick={this.handleSearchBy('description')}>
+                                Descrição{activeColumn === 'description' ? <Icon name='pin' style={{float:'right'}} />:null}
+                            </Table.HeaderCell>
                             <Table.HeaderCell width={2} textAlign="center">
                                 <Button animated primary onClick={this.add.bind(this)}>
                                     <Button.Content style={{boxShadow:'none'}} visible>Novo Registro</Button.Content>
@@ -99,16 +109,28 @@ class ListComponent extends Component{
     }
 }
 
-const mapStateToProps = ({solution:{solution}, pagination} ) => {
-    return {...solution, ...pagination}
-};
+const mapStateToProps = ({solution:{solution}, pagination, content:{search}} ) => {
+    let items;
+    if(search.text !== '' )
+        items = solution.items.filter(f=>f[search.field].toLowerCase().includes(search.text.toLowerCase()));
+    else
+        items = solution.items;
 
+
+    return {
+        items,
+        activePage:pagination.activePage
+    }
+};
 const mapDispatchToProps = dispatch => ({
     solutionAdding(){
         dispatch(solutionAdding())
     },
     solutionEditing(item){
         dispatch(solutionEditing(item))
+    },
+    setFieldToSearch(key){
+        dispatch(setFieldToSearch(key))
     }
 });
 

@@ -40,7 +40,7 @@ class LayoutComponent extends Component {
                             </Menu.Item>
                         </Link>
                         {routes().map(m=>
-                                <Link to={m.path}>
+                                <Link to={m.path} key={m.path}>
                                     <Menu.Item name={m.path} link>
                                         {m.description}
                                     </Menu.Item>
@@ -59,10 +59,12 @@ class LayoutComponent extends Component {
     }
 }
 
-const mapStateToProps = ({content}) => ({
-    maximized: content.maximized,
-    redirectToHome:content.redirectToHome
-});
+const mapStateToProps = ({content:{content}}) => {
+    return{
+        maximized: content.maximized,
+        redirectToHome:content.redirectToHome
+    }
+};
 
 
 export default connect(mapStateToProps)(LayoutComponent);

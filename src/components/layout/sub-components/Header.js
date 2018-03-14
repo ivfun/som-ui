@@ -38,7 +38,7 @@ class HeaderComponent extends Component{
         )
     }
 }
-const mapStateToProps = ({content}) => {
+const mapStateToProps = ({content:{content}}) => {
     return {
         maximized: content.maximized,
     }

@@ -12,4 +12,4 @@ export const maximizeContent = ()=>({
 });
 export const normalizeContent = ()=>({
     type:NORMALIZE_CONTENT
-})
+});

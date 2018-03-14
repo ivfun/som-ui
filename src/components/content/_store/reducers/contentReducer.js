@@ -1,4 +1,6 @@
-import {TO_HOME, MINIMIZE_CONTENT, MAXIMIZE_CONTENT, NORMALIZE_CONTENT} from '../actions/contentAction.types'
+import {
+    TO_HOME, MINIMIZE_CONTENT, MAXIMIZE_CONTENT, NORMALIZE_CONTENT
+} from '../actions/contentAction.types'
 
 const initialState = {
     maximized:false,
@@ -19,6 +21,7 @@ export default (state = initialState, action) => {
         case NORMALIZE_CONTENT:
             state = {...initialState};
             break;
+
         default:break
     }
     return state

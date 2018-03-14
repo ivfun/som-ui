@@ -1,11 +1,16 @@
 import React,{Component} from 'react';
-import { Segment, Label, Icon } from 'semantic-ui-react'
+import { Segment, Label, Input, Icon } from 'semantic-ui-react'
 import './Content.css'
 import { connect } from 'react-redux'
-import {maximizeContent, minimizeContent, normalizeContent, redirectToHome} from "./_store/actions/contentAction";
+import {
+    maximizeContent, minimizeContent, normalizeContent, redirectToHome
+} from "./_store/actions/contentAction";
+import {setTextToSearch} from "./_store/actions/searchAction";
+
 import {
     Redirect
 } from "react-router-dom";
+
 
 class ContentComponent extends Component{
     constructor(props){
@@ -33,6 +38,10 @@ class ContentComponent extends Component{
     handleSizeWindow(){
         this.state.maximized? this.props.minimizeContent():this.props.maximizeContent();
     }
+    onChangeSearch(e){
+        e.preventDefault();
+        this.props.setTextToSearch(e.target.value);
+    }
     render(){
         let{maximized, toHome, isDashboard} = this.state;
         const widthSideBar =  maximized ? 0 : 150;
@@ -49,7 +58,11 @@ class ContentComponent extends Component{
                 <div className="content" style={{height:(height-35)+'px'}}>
                     <div className="header-content" >
                         <Label className="header-title" ribbon>{this.state.headerName}</Label>
-
+                        <Input
+                            onChange={this.onChangeSearch.bind(this)}
+                            icon={{ name: 'search', circular: true, link: true }}
+                            placeholder='Buscar...'
+                        />
                         {isDashboard?'':<Icon as='i' className="close-content" name='window close' size='large' link onClick={()=>this.handleClose()}/>}
 
                         {maximized ?
@@ -64,7 +77,7 @@ class ContentComponent extends Component{
         )
     }
 }
-const mapStateToProps = ({content}) => {
+const mapStateToProps = ({content:{content}}) => {
     return {
         maximized: content.maximized,
         toHome: content.toHome
@@ -83,6 +96,9 @@ const mapDispatchToProps = dispatch => ({
     },
     normalizeContent(){
         dispatch(normalizeContent())
+    },
+    setTextToSearch(value){
+        dispatch(setTextToSearch(value))
     }
 });
 

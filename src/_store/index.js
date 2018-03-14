@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import contentReducer from '../components/content/_store/reducers/contentReducer'
+import contentReducer from '../components/content/_store/index'
 import serviceOrderReducer from '../components/service-order/_store/reducers/ServiceOrderCrudReducer'
 import componentReducer from '../components/component/_store/index';
 import solutionReducer from '../components/solution/_store/index';

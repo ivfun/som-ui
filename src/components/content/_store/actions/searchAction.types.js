@@ -1,0 +1,2 @@
+export const SET_TEXT_TO_SEARCH  = 'SET_TEXT_TO_SEARCH';
+export const SET_FIELD_TO_SEARCH = 'SET_FIELD_TO_SEARCH';

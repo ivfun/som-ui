@@ -49,7 +49,7 @@ class ListComponent extends Component{
                 <Table striped>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell width={2}>ID</Table.HeaderCell>
+                            <Table.HeaderCell width={2} link>ID</Table.HeaderCell>
                             <Table.HeaderCell width={12}>Descrição</Table.HeaderCell>
                             <Table.HeaderCell width={2} textAlign="center">
                                 <Button animated primary onClick={this.add.bind(this)}>
@@ -99,8 +99,18 @@ class ListComponent extends Component{
     }
 }
 
-const mapStateToProps = ({component:{component}, pagination} ) => {
-    return {...component, ...pagination}
+const mapStateToProps = ({component:{component}, pagination, content:{search}} ) => {
+    let items;
+    if(search.text !== '')
+        items = component.items.filter(f=>f[search.field!==''?search.field:'description'].toLowerCase() === search.text.toLowerCase());
+    else
+        items = component.items;
+
+
+    return {
+        items,
+        activePage:pagination.activePage
+    }
 };
 
 const mapDispatchToProps = dispatch => ({
